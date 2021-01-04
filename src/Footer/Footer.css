@@ -1,0 +1,11 @@
+.footer_links {
+    font-size: small;
+    display: flex;
+    margin: 50px 0 0 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    margin: auto;
+}
