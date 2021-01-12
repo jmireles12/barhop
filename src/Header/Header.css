@@ -1,5 +1,7 @@
 .header {
+    padding: 20px;
     text-align: center;
+    background-color: #1f446e;
 }
 
 .title {
@@ -7,9 +9,21 @@
 }
 
 a {
-    color: black;
+    color: white;
 }
 
 a:hover {
     color: gray;
+}
+
+.header_li {
+    list-style-type: none;
+    margin: auto;
+}
+
+.header_links {
+    font-size: small;
+    display: flex;
+    margin: 10px 10px 0 0;
+    padding: 10px;
 }

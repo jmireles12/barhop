@@ -1,10 +1,15 @@
 body {
-    padding: 50px;
-    background-color: #c0392b;
+    background-color: #274c77;
     font-family: sans-serif;
 }
 
 #container {
     display: flex;
     justify-content: center;
+}
+
+img {
+    height: 250px;
+    width: 85%;
+    padding: 25px 25px 10px 25px;
 }

@@ -1,0 +1,30 @@
+.lists__ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+.lists__list img {
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.lists__list p {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+.lists__list {
+    padding: 10px;
+    overflow: auto;
+    list-style-position: inside;
+    border: 1px solid black;
+    background: #6096BA;
+    width: 100%;
+}
+
+.lists__list:nth-child(odd) {
+    background: #011638
+}

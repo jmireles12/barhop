@@ -1,11 +1,10 @@
-.footer_links {
-    font-size: small;
-    display: flex;
-    margin: 50px 0 0 0;
-    padding: 0;
-}
-
-li {
-    list-style-type: none;
-    margin: auto;
+.footer {
+    flex-shrink: 0;
+    text-align: center;
+    background-color: #1f446e;
+    color: 8b8c89;
+    padding: 1px;
+    left:0;
+    bottom:0;
+    right:0;
 }
