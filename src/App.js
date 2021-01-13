@@ -12,6 +12,7 @@ import Bar from './Bar/Bar'
 import config from './config'
 import './App.css'
 import ApiContext from './ApiContext'
+import BarContent from './BarContent/BarContent'
 
 class App extends Component {
     
@@ -49,7 +50,7 @@ class App extends Component {
           )}
           <Route
             path='/bar/:barId'
-            component={Bar}
+            component={BarContent}
           />
       </>
     )
