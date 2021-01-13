@@ -28,8 +28,3 @@ h3 {
 .search__list:nth-child(odd) {
     background: #011638
 }
- 
-.search__list:hover {
-  background: #eee;
-  cursor: pointer;
-}
