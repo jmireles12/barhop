@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
+import config from '../config'
 import './Search.css'
 
 class Search extends Component {
 
-    importAll(r) {
-        let images = {};
-         r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images
+    state = {
+        results: []
+    }
+
+    componentDidMount() {
+        setTimeout(() => this.setState(config.API_SEARCH))
     }
 
     render() {
+        console.log(this.state.results)
         return (
             <div className='Search'>
                 <div className='header__search'>
