@@ -14,6 +14,8 @@ import './App.css'
 import ApiContext from './ApiContext'
 import BarContent from './BarContent/BarContent'
 
+console.log(process.env.REACT_APP_API_KEY)
+
 class App extends Component {
     
   state = {

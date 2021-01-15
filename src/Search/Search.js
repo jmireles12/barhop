@@ -8,12 +8,33 @@ class Search extends Component {
         results: []
     }
 
+    setResults = results => {
+        this.setState({
+            results,
+            error: null,
+        })
+    }
+
     componentDidMount() {
-        setTimeout(() => this.setState(config.API_SEARCH))
+        fetch(config.API_SEARCH, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${config.API_KEY}`
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(this.setResults)
+        .catch(error => this.setState({ error }))
     }
 
     render() {
-        console.log(this.state.results)
+        console.log(config.API_KEY)
         return (
             <div className='Search'>
                 <div className='header__search'>
