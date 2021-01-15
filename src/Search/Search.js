@@ -16,25 +16,19 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        fetch(config.API_SEARCH, {
+        let requestOptions = {
             method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization': `Bearer ${config.API_KEY}`
-            }
-        })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(res.status)
-            }
-            return res.json()
-        })
-        .then(this.setResults)
-        .catch(error => this.setState({ error }))
+            redirect: 'follow'
+          };
+          
+          fetch("https://maps.googleapis.com/maps/api/place/textsearch/json?query=austin&type=bar&key=AIzaSyB5zppx2H_TdbclNzQJMsEU-iOFP930_vE", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 
     render() {
-        console.log(config.API_KEY)
+        console.log(this.state.results)
         return (
             <div className='Search'>
                 <div className='header__search'>
