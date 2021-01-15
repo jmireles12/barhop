@@ -16,15 +16,21 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        let requestOptions = {
+        fetch(config.API_SEARCH + config.API_KEY, {
             method: 'GET',
-            redirect: 'follow'
-          };
-          
-          fetch("https://maps.googleapis.com/maps/api/place/textsearch/json?query=austin&type=bar&key=AIzaSyB5zppx2H_TdbclNzQJMsEU-iOFP930_vE", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            headers: {
+                'content-type': 'application/json',
+                
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(this.setResults)
+        .catch(error => this.setState({ error }))
     }
 
     render() {

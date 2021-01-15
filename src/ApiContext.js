@@ -3,7 +3,7 @@ import React from 'react'
 export default React.createContext({
   bars: [],
   lists: [],
-  createList: () => {},
+  addList: () => {},
   addBar: () => {},
   deleteBar: () => {},
   deleteList: () => {}

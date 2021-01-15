@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ApiContext from '../ApiContext'
 import Bar from '../Bar/Bar'
 import { findBar } from '../bars-helpers'
-import config from '../config'
 
 export default class BarContent extends Component {
 
@@ -29,6 +28,14 @@ export default class BarContent extends Component {
                         <p key={i}>{para}</p>
                     )}
                 </div>
+                <button
+                    tag='button'
+                    role='link'
+                    onClick={() => this.props.history.goBack()}
+                >
+                    Back
+                </button>
+                <button>Remove</button>
             </section>
         )
     }

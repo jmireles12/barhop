@@ -26,6 +26,36 @@ class App extends Component {
     setTimeout(() => this.setState(config.API_ENDPOINT))
   }
 
+  handleAddList = list => {
+    this.setState({
+      lists: [
+        ...this.state.lists,
+        list
+      ]
+    })
+  }
+
+  handleAddBar = bar => {
+    this.setState({
+      bars: [
+        ...this.state.bars,
+        bar
+      ]
+    })
+  }
+
+  handleDeleteList = listId => {
+    this.setState({
+      lists: this.state.lists.filter(list => list.id !== listId)
+    })
+  }
+
+  handleDeleteBar = barId => {
+    this.setState({
+      bars: this.state.bars.filter(bar => bar.id !== barId)
+    })
+  }
+
   renderNav() {
     return (
       <>
@@ -61,6 +91,10 @@ class App extends Component {
     const value = {
       bars: this.state.bars,
       lists: this.state.lists,
+      addList: this.handleAddList,
+      addBar: this.handleAddBar,
+      deleteBar: this.handleDeleteBar,
+      deleteList: this.handleDeleteList
     }
     return (
       <ApiContext.Provider value={value}>
