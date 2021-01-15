@@ -1,12 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { shallow, configure } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16';
+import toJson from 'enzyme-to-json'
 import About from './About'
 
-it('renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(
-        <About />,
-        div
-    )
-    ReactDOM.unmountComponentAtNode(div)
+configure({adapter: new Adapter()});
+describe(`About component`, () => {
+    it('renders the complete about', () => {
+        const wrapper = shallow(<About />)
+        expect(toJson(wrapper)).toMatchSnapshot()
+    })
 })
