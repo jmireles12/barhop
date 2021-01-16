@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import About from '../About/About'
 import bar from '../images/bar.jpg'
 
 class HomePage extends Component {

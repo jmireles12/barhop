@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import config from '../config'
+/* import config from '../config'*/
 import './Search.css'
 
 class Search extends Component {
