@@ -15,7 +15,7 @@ class Search extends Component {
         })
     }
 
-    componentDidMount() {
+    /* componentDidMount() {
         fetch(config.API_SEARCH + config.API_KEY, {
             method: 'GET',
             headers: {
@@ -31,7 +31,7 @@ class Search extends Component {
         })
         .then(this.setResults)
         .catch(error => this.setState({ error }))
-    }
+    } */
 
     render() {
         console.log(this.state.results)
