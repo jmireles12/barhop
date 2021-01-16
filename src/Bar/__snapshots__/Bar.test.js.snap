@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bar component renders a .Bar by default 1`] = `
+<div
+  className="barPage"
+>
+  <h2
+    className="Bar__title"
+  >
+    <Link
+      to="/bar/undefined"
+    />
+  </h2>
+</div>
+`;
+
+exports[`Bar component renders the Bar given props 1`] = `
+<div
+  className="barPage"
+>
+  <h2
+    className="Bar__title"
+  >
+    <Link
+      to="/bar/a"
+    >
+      test-class-name
+    </Link>
+  </h2>
+</div>
+`;
