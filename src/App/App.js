@@ -12,17 +12,43 @@ import config from '../config'
 import './App.css'
 import ApiContext from '../ApiContext'
 import BarContent from '../BarContent/BarContent'
+import AddList from '../AddList/AddList'
 
 
 class App extends Component {
     
   state = {
     bars: [],
-    lists: []
+    lists: [],
+    results: []
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState(config.API_ENDPOINT))
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/bars`),
+      fetch(`${config.API_ENDPOINT}/lists`),
+      fetch(config.API_SEARCH)
+    ])
+      .then(([barsRes, listsRes, resultsRes]) => {
+        if (!barsRes.ok)
+          return barsRes.json().then(e => Promise.reject(e))
+        if (!listsRes.ok)
+          return listsRes.json().then(e => Promise.reject(e))
+        if (!resultsRes.ok)
+          return resultsRes.json().then(e => Promise.reject(e))
+
+        return Promise.all([
+          barsRes.json(),
+          listsRes.json(),
+          resultsRes.json()
+        ])
+      })
+      .then(([bars, lists, results]) => {
+        this.setState({ bars, lists, results })
+      })
+      .catch(error => {
+        console.error({ error })
+      })
   }
 
   handleAddList = list => {
@@ -59,10 +85,13 @@ class App extends Component {
     return (
       <>
         <Route path='/' exact component={HomePage} />
-        <Route path='/lists' component={Lists} />
-        <Route path='/search' component={Search} />
+        <Route path='/lists' render={(props) => (
+          <Lists {...props} lists={this.state.lists}/>
+        )} />
+        <Route path='/search' render={(props) => (
+          <Search {...props} results={this.state.results}/>
+        )} />
         <Route path='/about' component={About} />
-        <Route path='/contact' component={Contact} />
       </>
     )
   }
@@ -82,6 +111,10 @@ class App extends Component {
             path='/bar/:barId'
             component={BarContent}
           />
+          <Route
+            path='/add-list'
+            component={AddList}
+          />
       </>
     )
   }
@@ -90,6 +123,7 @@ class App extends Component {
     const value = {
       bars: this.state.bars,
       lists: this.state.lists,
+      results: this.state.results,
       addList: this.handleAddList,
       addBar: this.handleAddBar,
       deleteBar: this.handleDeleteBar,

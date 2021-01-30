@@ -14,7 +14,6 @@ class Header extends Component {
                     <li className='header_li'><Link to='/search' style={{ textDecoration: 'none' }}>Search</Link></li>
                     <li className='header_li'><Link to='/lists' style={{ textDecoration: 'none' }}>Lists</Link></li>
                     <li className='header_li'><Link to='/about' style={{ textDecoration: 'none' }}>About</Link></li>
-                    <li className='header_li'><Link to='/contact' style={{ textDecoration: 'none' }}>Contact</Link></li>
                 </ul>
             </div>
         )

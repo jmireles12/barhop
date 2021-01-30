@@ -5,7 +5,6 @@ import './index.css';
 import App from './App/App';
 
 
-console.log(process.env)
 ReactDOM.render(
   <Router>
     <App />

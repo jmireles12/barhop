@@ -16,7 +16,7 @@ export default class BarContent extends Component {
     render() {
         const { bars=[] } = this.context
         const { barId } = this.props.match.params
-        const bar = findBar(bars, barId) || { content: '' }
+        const bar = findBar(bars, parseInt(barId)) || { content: '' }
         return (
             <section className='BarContent'>
                 <Bar
@@ -35,7 +35,6 @@ export default class BarContent extends Component {
                 >
                     Back
                 </button>
-                <button>Remove</button>
             </section>
         )
     }

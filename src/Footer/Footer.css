@@ -3,8 +3,18 @@
     text-align: center;
     background-color: #1f446e;
     color: 8b8c89;
-    padding: 1px;
+    padding: 5px 50px;
     left:0;
     bottom:0;
     right:0;
+}
+
+.facebook {
+    margin: 0 1rem;
+    transition: transform 250ms;
+    display: inline-block;
+}
+
+.footer__title {
+    font-size: 10px;
 }

@@ -18,19 +18,19 @@ class BarList extends Component {
     render() {
         const { listId } = this.props.match.params
         const { bars=[] } = this.context
-        const barsForList = getBarsForList(bars, listId)
+        const barsForList = getBarsForList(bars, parseInt(listId))
         return (
             <section className='BarList'>
                 <ul>
                     {barsForList.map(bar =>
                         <li key={bar.id}>
                             <Bar
-                                name={bar.name}
                                 id={bar.id}
-                            >
-                            {bar.name}
-                            </Bar>
-                            <button>Remove</button>
+                                name={bar.name}
+                                address={bar.address}
+                                price={bar.price}
+                                rating={bar.rating}
+                            />
                         </li>
                     )}
                 </ul>

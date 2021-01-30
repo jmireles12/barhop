@@ -1,76 +1,42 @@
 import React, { Component } from 'react'
-/* import config from '../config'*/
+import ResultList from '../ResultList/ResultList'
+import { getResults } from '../bars-helpers'
 import './Search.css'
+import ApiContext from '../ApiContext'
 
 class Search extends Component {
 
-    state = {
-        results: []
+    static defaultProps = {
+        history: {
+            goBack: () => { }
+        },
+        match: {
+            params: {}
+        }
     }
 
-    setResults = results => {
-        this.setState({
-            results,
-            error: null,
-        })
-    }
-
-    /* componentDidMount() {
-        fetch(config.API_SEARCH + config.API_KEY, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                
-            }
-        })
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(res.status)
-            }
-            return res.json()
-        })
-        .then(this.setResults)
-        .catch(error => this.setState({ error }))
-    } */
+    static contextType = ApiContext;
 
     render() {
-        console.log(this.state.results)
+        const { results=[] } = this.context
         return (
             <div className='Search'>
                 <div className='header__search'>
-                    <h2>Search Bars</h2>
-                    <p>Search for bars to add to your list.</p>
-                </div>
-                <div className='search__area'>
-                    <label htmlFor='search'>
-                    Search:
-                    {' '}
-                    </label>
-                    <input type='search' id='search' name='search' placeholder='Search..'/>
-                    <button type='submit'>Submit</button>    
+                    <h2>Add Bars</h2>
+                    <p>Lookup bars to add to your list.</p>
                 </div>
                 <div className='results'>
                     <ul className='search__ul'>
-                        <li className='search__list'>
-                            <h3>Example Bar</h3>
-                            <button type='submit'>Add</button>
-                        </li>
-                        <li className='search__list'>
-                            <h3>Example Bar 1</h3>
-                            <button type='submit'>Add</button>
-                        </li>
-                        <li className='search__list'>
-                            <h3>Example Bar 2</h3>
-                            <button type='submit'>Add</button>
-                        </li>
-                        <li className='search__list'>
-                            <h3>Example Bar 3</h3>
-                            <button type='submit'>Add</button>
-                        </li>
-                        <li className='search__list'>
-                            <h3>Example Bar 4</h3>
-                            <button type='submit'>Add</button>
-                        </li>
+                        {results.map(result => 
+                            <li className='search__list' key={result.id}>
+                                <ResultList
+                                    name={result.name}
+                                    address={result.address}
+                                    price={result.price}
+                                    rating={result.rating}
+                                />
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

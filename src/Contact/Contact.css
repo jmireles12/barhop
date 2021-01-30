@@ -12,7 +12,7 @@
   }
   
   /* Style inputs */
-  input[type=text], select, textarea {
+  .Contact-input, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -21,7 +21,7 @@
     resize: vertical;
   }
 
-  input[type=email] {
+  .Contact-input-email {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -30,7 +30,7 @@
     resize: vertical;
   }
   
-  input[type=submit] {
+  .Contact-input-submit {
     background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
@@ -38,7 +38,7 @@
     cursor: pointer;
   }
   
-  input[type=submit]:hover {
+  .Contact-input-submit:hover {
     background-color: #45a049;
   }
   
