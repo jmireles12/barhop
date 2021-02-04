@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
-import BarList from '../BarList/BarList'
+import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext'
-import Bar from '../Bar/Bar'
-import CircleButton from '../CircleButton/CircleButton'
 import config from '../config'
 import { countBarsForList } from '../bars-helpers'
 import './ListTab.css'
