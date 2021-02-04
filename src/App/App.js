@@ -20,7 +20,12 @@ class App extends Component {
   state = {
     bars: [],
     lists: [],
-    results: []
+    results: [],
+    input: ''
+  }
+
+  handleInput = inputValue => {
+    this.setState({ input: inputValue })
   }
 
   componentDidMount() {
@@ -69,9 +74,9 @@ class App extends Component {
     })
   }
 
-  handleDeleteList = listId => {
+  handleDeleteList = listid => {
     this.setState({
-      lists: this.state.lists.filter(list => list.id !== listId)
+      lists: this.state.lists.filter(list => list.id !== listid)
     })
   }
 
@@ -84,7 +89,6 @@ class App extends Component {
   renderNav() {
     return (
       <>
-        <Route path='/' exact component={HomePage} />
         <Route path='/lists' render={(props) => (
           <Lists {...props} lists={this.state.lists}/>
         )} />
@@ -127,12 +131,14 @@ class App extends Component {
       addList: this.handleAddList,
       addBar: this.handleAddBar,
       deleteBar: this.handleDeleteBar,
-      deleteList: this.handleDeleteList
+      deleteList: this.handleDeleteList,
+      addInput: this.handleInput
     }
     return (
       <ApiContext.Provider value={value}>
         <div className="App">
           <Header />
+          <Route path='/' exact component={HomePage} />
           {this.renderNav()}
           {this.renderBarLists()}
           <Footer/>

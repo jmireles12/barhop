@@ -10,6 +10,16 @@ exports[`Bar component renders a .Bar by default 1`] = `
     <Link
       to="/bar/undefined"
     />
+    <p />
+    <p />
+    <p />
+    <button
+      className="Bar__delete"
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
   </h2>
 </div>
 `;
@@ -26,6 +36,16 @@ exports[`Bar component renders the Bar given props 1`] = `
     >
       test-class-name
     </Link>
+    <p />
+    <p />
+    <p />
+    <button
+      className="Bar__delete"
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </button>
   </h2>
 </div>
 `;

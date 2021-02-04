@@ -21,7 +21,7 @@ class Lists extends Component {
     static contextType = ApiContext
 
     handleDeleteList = e => {
-        const listid = this.props.lists.id
+        const listid = this.props.lists.map(list => list.id)
         fetch(`${config.API_ENDPOINT}/lists/` + listid, {
             method: 'DELETE',
             headers: {
@@ -33,6 +33,7 @@ class Lists extends Component {
                 if(!res.ok) {
                     throw new Error(res.statusText)
                 }
+              
             })
             .then(res => {
                 this.context.deleteList(listid)

@@ -6,6 +6,7 @@ export default React.createContext({
   results: [],
   addList: () => {},
   addBar: () => {},
+  addInput: () => {},
   deleteBar: () => {},
   deleteList: () => {}
 })

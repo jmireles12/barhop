@@ -45,7 +45,7 @@ export default class ResultList extends Component {
         this.setState({ listid: e.target.value, showButton: true })
     }
 
-    handleSubmit = e => {
+    handleSubmit = (e) => {
         console.log('hello')
         const bar = {
             name: this.state.name,
