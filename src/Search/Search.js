@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ResultList from '../ResultList/ResultList'
-import { getResults } from '../bars-helpers'
 import './Search.css'
 import ApiContext from '../ApiContext'
 
