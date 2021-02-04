@@ -46,7 +46,6 @@ export default class ResultList extends Component {
     }
 
     handleSubmit = (e) => {
-        console.log('hello')
         const bar = {
             name: this.state.name,
             address: this.state.address,
@@ -101,7 +100,7 @@ export default class ResultList extends Component {
         const { lists=[] } = this.context
         const { name, price, rating, address } = this.props
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} >
             <div className='ResultList__error' role='alert'>
                 {this.state.error && <ValidationError message={listError} />}
             </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getBarsForList } from '../bars-helpers'
 import Bar from '../Bar/Bar'
 import ApiContext from '../ApiContext';
+import './BarList.css'
 
 class BarList extends Component {
     static defaultProps = {
@@ -20,8 +21,8 @@ class BarList extends Component {
         const { bars=[] } = this.context
         const barsForList = getBarsForList(bars, parseInt(listId))
         return (
-            <section className='BarList'>
-                <ul>
+            <section>
+                <ul className='BarList__ul'>
                     {barsForList.map(bar =>
                         <li key={bar.id}>
                             <Bar

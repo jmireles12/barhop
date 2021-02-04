@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.Search {
+  text-align: center;
+}
+
 .resultPage {
   display: block;
 }
@@ -46,7 +50,6 @@ h4 {
   list-style-position: inside;
   border: 1px solid black;
   background: #6096BA;
-  width: 100%;
 }
 
 .search__list:nth-child(odd) {

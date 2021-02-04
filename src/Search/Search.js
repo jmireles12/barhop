@@ -41,14 +41,6 @@ class Search extends Component {
                     <h2>Add Bars</h2>
                     <p>Lookup bars to add to your list.</p>
                 </div>
-                <form className='searchBar' onSubmit={this.handleSubmit}>
-                    <input type='search'
-                        name='inputValue'
-                        placeholder='City...'
-                        onChange={this.handleInputChange}
-                    />
-                    <button type='submit'>Submit</button>
-                </form>
                 <div className='results'>
                     <ul className='search__ul'>
                         {results.map(result => 

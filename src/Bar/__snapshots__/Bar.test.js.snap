@@ -4,15 +4,27 @@ exports[`Bar component renders a .Bar by default 1`] = `
 <div
   className="barPage"
 >
-  <h2
+  <section
     className="Bar__title"
   >
-    <Link
-      to="/bar/undefined"
-    />
-    <p />
-    <p />
-    <p />
+    <h2 />
+    <section
+      className="fields"
+    >
+      <p
+        className="address"
+      />
+      <p
+        className="price"
+      >
+        Price: 
+      </p>
+      <p
+        className="rating"
+      >
+        Rating: 
+      </p>
+    </section>
     <button
       className="Bar__delete"
       onClick={[Function]}
@@ -20,7 +32,7 @@ exports[`Bar component renders a .Bar by default 1`] = `
     >
       Delete
     </button>
-  </h2>
+  </section>
 </div>
 `;
 
@@ -28,17 +40,29 @@ exports[`Bar component renders the Bar given props 1`] = `
 <div
   className="barPage"
 >
-  <h2
+  <section
     className="Bar__title"
   >
-    <Link
-      to="/bar/a"
-    >
+    <h2>
       test-class-name
-    </Link>
-    <p />
-    <p />
-    <p />
+    </h2>
+    <section
+      className="fields"
+    >
+      <p
+        className="address"
+      />
+      <p
+        className="price"
+      >
+        Price: 
+      </p>
+      <p
+        className="rating"
+      >
+        Rating: 
+      </p>
+    </section>
     <button
       className="Bar__delete"
       onClick={[Function]}
@@ -46,6 +70,6 @@ exports[`Bar component renders the Bar given props 1`] = `
     >
       Delete
     </button>
-  </h2>
+  </section>
 </div>
 `;

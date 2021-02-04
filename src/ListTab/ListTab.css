@@ -1,0 +1,15 @@
+.ListTab {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.List__title {
+    text-align: center;
+}
+
+.ListTab__delete {
+    display: block;
+    float: right;
+    height: 30px;
+}

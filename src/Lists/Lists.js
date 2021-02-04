@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
-import BarList from '../BarList/BarList'
+import { Link } from 'react-router-dom';
+/* import BarList from '../BarList/BarList' */
 import ApiContext from '../ApiContext'
-import Bar from '../Bar/Bar'
+/* import Bar from '../Bar/Bar' */
 import CircleButton from '../CircleButton/CircleButton'
-import config from '../config'
-import { countBarsForList } from '../bars-helpers'
+/* import config from '../config' */
+import ListTab from '../ListTab/ListTab'
+/* import { countBarsForList } from '../bars-helpers' */
 import './Lists.css'
 
 class Lists extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            render: false
+        }
+    }
 
     static defaultProps = {
         handleDeleteList: () => { },
@@ -17,54 +25,10 @@ class Lists extends Component {
             params: {}
         }
     }
-
     static contextType = ApiContext
 
-    handleDeleteList = e => {
-        const listid = this.props.lists.map(list => list.id)
-        fetch(`${config.API_ENDPOINT}/lists/` + listid, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(listid),
-        })
-            .then(res => {
-                if(!res.ok) {
-                    throw new Error(res.statusText)
-                }
-              
-            })
-            .then(res => {
-                this.context.deleteList(listid)
-                this.props.onDeleteList(listid)
-            })
-            .catch(error => {
-                console.error(error)
-            })
-    }
-    
-    renderBarLists() {
-        return (
-          <>
-              {['/list/:listId'].map(path =>
-                  <Route
-                    exact
-                    key={path}
-                    path={path}
-                    component={BarList}
-                  />
-              )}
-              <Route
-                path='/bar/:barId'
-                component={Bar}
-              />
-          </>
-        )
-    }
-
     render () {
-        const { lists=[], bars=[] } = this.context
+        const { lists=[] } = this.props
         return (
             <div className='lists'>
                 <div className='header__lists'>
@@ -76,22 +40,10 @@ class Lists extends Component {
                     <ul className='lists__ul'>
                         {lists.map(list =>
                             <li key={list.id}  className='lists__list'>
-                                <Link
-                                    className='list-link'
-                                    to={`/list/${list.id}`}
-                                >
-                                    {list.name}
-                                </Link>
-                                <span className='list-num-bars'>
-                                    Num of Bars: {countBarsForList(bars, list.id)}
-                                </span>
-                                <button
-                                    className='delete__list'
-                                    type='button'
-                                    onClick={() => { this.handleDeleteList(list.id) }}
-                                >
-                                    Delete
-                                </button>
+                                <ListTab
+                                    id={list.id}
+                                    name={list.name}
+                                />
                             </li>
                         )}
                     </ul>

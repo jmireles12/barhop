@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import ApiContext from '../ApiContext'
 import config from '../config';
+import './Bar.css'
 
 export default class Bar extends Component {
     static defaultProps = {
@@ -41,13 +41,16 @@ export default class Bar extends Component {
         const { name, id, address, price, rating } = this.props
         return (
             <div className='barPage'>
-                <h2 className='Bar__title'>
-                    <Link to={`/bar/${id}`}>
+                <section className='Bar__title'>
+                    <h2>
                         {name}
-                    </Link>
-                    <p>{address}</p>
-                    <p>{price}</p>
-                    <p>{rating}</p>
+                    </h2>
+                    <section className='fields'>
+                        <p className='address'>{address}</p>
+                        <p className='price'>Price: {price}</p>
+                        <p className='rating'>Rating: {rating}</p>
+                    </section>
+                    
                     <button
                         className='Bar__delete'
                         type='button'
@@ -55,7 +58,7 @@ export default class Bar extends Component {
                     >
                         Delete
                     </button>
-                </h2>
+                </section>
             </div>
         )    
     } 
