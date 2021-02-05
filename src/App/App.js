@@ -20,11 +20,6 @@ class App extends Component {
     bars: [],
     lists: [],
     results: [],
-    input: ''
-  }
-
-  handleInput = inputValue => {
-    this.setState({ input: inputValue })
   }
 
   componentDidMount() {
@@ -131,7 +126,6 @@ class App extends Component {
       addBar: this.handleAddBar,
       deleteBar: this.handleDeleteBar,
       deleteList: this.handleDeleteList,
-      addInput: this.handleInput
     }
     return (
       <ApiContext.Provider value={value}>

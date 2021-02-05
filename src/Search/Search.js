@@ -26,7 +26,7 @@ class Search extends Component {
         this.setState({ inputValue: { value: inputValue} })
         
     }
-
+ 
     handleChange = (e) => {
         this.setState({ listid: e.target.value })
     }
@@ -44,8 +44,8 @@ class Search extends Component {
                 <div className='header__search'>
                     <h2>Add Bars</h2>
                     <p>Lookup bars to add to your list.</p>
-                    <select name='result-list-id'  onChange={this.handleChange}>
-                        <option>...</option>
+                    <select name='result-list-id' onChange={this.handleChange}>
+                        <option value=''>...</option>
                         {lists.map(list =>
                             <option key={list.id} value={list.id}>
                                 {list.name}

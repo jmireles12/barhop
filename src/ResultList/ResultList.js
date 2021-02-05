@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ApiContext from '../ApiContext'
-import ValidationError from '../ValidationError'
 import config from '../config';
 import './ResultList.css'
 
@@ -39,10 +38,6 @@ export default class ResultList extends Component {
         this.setState({ listChoice: { value: list } });
     }
 
-    handleChange = (e) => {
-        this.setState({ listid: e.target.value, showButton: true })
-    }
-
     handleSubmit = (e) => {
         const bar = {
             name: this.state.name,
@@ -51,18 +46,18 @@ export default class ResultList extends Component {
             price: this.state.price,
             listid: this.props.listid
         }
-
         fetch(`${config.API_ENDPOINT}/bars`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             },
+            redirect: 'follow',
             body:JSON.stringify(bar),
         })
         .then(res => {
             if(!res.ok)
                 return res.json().then(e => Promise.reject(e))
-            return res.json
+            /* return res.json */
         })
         .then(bar => {
             this.context.addBar(bar)
@@ -93,14 +88,10 @@ export default class ResultList extends Component {
     }
 
     render() {
-        const listError = this.validateListId();
         const { name, price, rating, address, listid } = this.props
         console.log(listid)
         return (
-            <form onSubmit={(e) => this.handleSubmit(e)} >
-                <div className='ResultList__error' role='alert'>
-                    {this.state.error && <ValidationError message={listError} />}
-                </div>
+            <form onSubmit={e => this.handleSubmit(e)} >
                 <section className='resultPage'>
                     <h4 className='Result__title'>
                         {name}  
