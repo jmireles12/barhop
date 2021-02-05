@@ -51,7 +51,6 @@ export default class ResultList extends Component {
             price: this.state.price,
             listid: this.props.listid
         }
-        this.setState({ error: null })
 
         fetch(`${config.API_ENDPOINT}/bars`, {
             method: 'POST',
@@ -98,28 +97,28 @@ export default class ResultList extends Component {
         const { name, price, rating, address, listid } = this.props
         console.log(listid)
         return (
-            <form onSubmit={this.handleSubmit} >
-            <div className='ResultList__error' role='alert'>
-                {this.state.error && <ValidationError message={listError} />}
-            </div>
-            <section className='resultPage'>
-                <h4 className='Result__title'>
-                    {name}  
-                </h4>
-                <p className='address'>{address}</p>
-                <section className='info'>
-                    <p className='price'>Price: {this.priceRange()}</p>
-                    <p className='rating'>Rating: {rating}</p>   
+            <form onSubmit={(e) => this.handleSubmit(e)} >
+                <div className='ResultList__error' role='alert'>
+                    {this.state.error && <ValidationError message={listError} />}
+                </div>
+                <section className='resultPage'>
+                    <h4 className='Result__title'>
+                        {name}  
+                    </h4>
+                    <p className='address'>{address}</p>
+                    <section className='info'>
+                        <p className='price'>Price: {this.priceRange()}</p>
+                        <p className='rating'>Rating: {rating}</p>   
+                    </section>
+                    <section className='adding'>
+                        <button type='submit'
+                            disabled={!listid}
+                            onClick={e => this.clickMe(name, address, price, parseInt(rating))}
+                        >
+                                Add to List
+                        </button>  
+                    </section>
                 </section>
-                <section className='adding'>
-                    <button type='submit'
-                        disabled={!listid}
-                        onClick={e => this.clickMe(name, address, price, parseInt(rating))}
-                    >
-                            Add to List
-                    </button>  
-                </section>
-            </section>
             </form>
         )
     }
