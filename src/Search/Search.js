@@ -27,6 +27,10 @@ class Search extends Component {
         
     }
 
+    handleChange = (e) => {
+        this.setState({ listid: e.target.value })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
         const inputValue = e.target['inputValue'].value
@@ -34,12 +38,19 @@ class Search extends Component {
     }
 
     render() {
-        const { results=[] } = this.context
+        const { results=[], lists=[] } = this.context
         return (
             <div className='Search'>
                 <div className='header__search'>
                     <h2>Add Bars</h2>
                     <p>Lookup bars to add to your list.</p>
+                    <select name='result-list-id'  onChange={this.handleChange}>
+                        <option>...</option>
+                        {lists.map(list =>
+                            <option key={list.id} value={list.id}>
+                                {list.name}
+                            </option>)}
+                    </select>  
                 </div>
                 <div className='results'>
                     <ul className='search__ul'>
@@ -50,6 +61,7 @@ class Search extends Component {
                                     address={result.address}
                                     price={result.price}
                                     rating={result.rating}
+                                    listid={this.state.listid}
                                 />
                             </li>
                         )}

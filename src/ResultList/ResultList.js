@@ -33,8 +33,6 @@ export default class ResultList extends Component {
         price: {
             value: ''
         },
-        listid: '',
-        showButton: false
     }
 
     updateListSelected(list) {
@@ -51,7 +49,7 @@ export default class ResultList extends Component {
             address: this.state.address,
             rating: this.state.rating,
             price: this.state.price,
-            listid: e.target['result-list-id'].value
+            listid: this.props.listid
         }
         this.setState({ error: null })
 
@@ -85,7 +83,7 @@ export default class ResultList extends Component {
     }
 
     validateListId() {
-        const listid = this.state.listid.value;
+        const listid = this.props.listid
         if (!listid) {
             return "Please choose a list to put your bar in";
         } 
@@ -97,8 +95,8 @@ export default class ResultList extends Component {
 
     render() {
         const listError = this.validateListId();
-        const { lists=[] } = this.context
-        const { name, price, rating, address } = this.props
+        const { name, price, rating, address, listid } = this.props
+        console.log(listid)
         return (
             <form onSubmit={this.handleSubmit} >
             <div className='ResultList__error' role='alert'>
@@ -114,14 +112,12 @@ export default class ResultList extends Component {
                     <p className='rating'>Rating: {rating}</p>   
                 </section>
                 <section className='adding'>
-                    <button type='submit' disabled={!this.state.listid} onClick={e => this.clickMe(name, address, price, parseInt(rating))}>Add to List</button>
-                    <select name='result-list-id' defaultValue='' onChange={this.handleChange}>
-                        <option value=''>...</option>
-                        {lists.map(list =>
-                            <option key={list.id} value={list.id} /* onChange={this.isSubmitEnabled()} */>
-                                {list.name}
-                            </option>)}
-                    </select>    
+                    <button type='submit'
+                        disabled={!listid}
+                        onClick={e => this.clickMe(name, address, price, parseInt(rating))}
+                    >
+                            Add to List
+                    </button>  
                 </section>
             </section>
             </form>
