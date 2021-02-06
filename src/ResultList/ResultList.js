@@ -32,6 +32,7 @@ export default class ResultList extends Component {
         price: {
             value: ''
         },
+        message: ''
     }
 
     updateListSelected(list) {
@@ -39,6 +40,9 @@ export default class ResultList extends Component {
     }
 
     handleSubmit = (e) => {
+        if(e && e.preventDefault) {
+            e.preventDefault();
+        }
         const bar = {
             name: this.state.name,
             address: this.state.address,
@@ -54,18 +58,22 @@ export default class ResultList extends Component {
             redirect: 'follow',
             body:JSON.stringify(bar),
         })
-        .then(res => {
-            if(!res.ok)
-                return res.json().then(e => Promise.reject(e))
-            /* return res.json */
+        .then((res) => {
+            if(res.ok) {
+                return res.json()
+            }
+            return res.json().then(e => Promise.reject(e))
         })
-        .then(bar => {
+        .then((bar) => {
             this.context.addBar(bar)
+            this.setState({ message: 'Bar added' })
+            console.log(this.state.message)
         })
-        .catch(error => {
+        .catch((error) => {
             console.error({ error })
             this.setState({ error })
         })
+        return false;
     }
 
     priceRange() {
@@ -89,7 +97,6 @@ export default class ResultList extends Component {
 
     render() {
         const { name, price, rating, address, listid } = this.props
-        console.log(listid)
         return (
             <form onSubmit={e => this.handleSubmit(e)} >
                 <section className='resultPage'>
@@ -102,6 +109,7 @@ export default class ResultList extends Component {
                         <p className='rating'>Rating: {rating}</p>   
                     </section>
                     <section className='adding'>
+                        <p>{this.state.message}</p>
                         <button type='submit'
                             disabled={!listid}
                             onClick={e => this.clickMe(name, address, price, parseInt(rating))}
