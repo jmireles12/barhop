@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-/* import BarList from '../BarList/BarList' */
 import ApiContext from '../ApiContext'
-/* import Bar from '../Bar/Bar' */
 import CircleButton from '../CircleButton/CircleButton'
-/* import config from '../config' */
 import ListTab from '../ListTab/ListTab'
-/* import { countBarsForList } from '../bars-helpers' */
 import './Lists.css'
 
 class Lists extends Component {
