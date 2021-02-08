@@ -1,13 +1,23 @@
 # BARHOP
-This app was inspired by personal experience having to plan a night out with friends or family
-and having people not have an idea of where to go first. We ar based in Austin, Texas and we
-know people that have come and don't know what to visit, well, this will help everyone know where
-to go and visit and have a plan. Utilizing this app will help group of people come together to
-start the night and knowing at all times where to head next after leaving a bar or restaurant.
+This app help you organize your night out in Austin, TX with your friends by giving you the ability to make a list of bars. We provide a list of bars that are in Austin with name and address so you can come back and see what bars you wanted to visit. After deciding what bars you want to visit you can add them to a list.
 
 ## Live App
 
 link: https://barhop-8p69nwuwo.vercel.app/
+
+## Screenshots
+
+Welcome:
+![welcome screen](homepage.png)
+
+Bar List:
+![bar list screen](bar_list.png)
+
+List Page:
+![list page screen](list_page.png)
+
+About:
+![about page screen](about.png)
 
 ## Build With
 * React
