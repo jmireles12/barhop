@@ -8,16 +8,16 @@ link: https://barhop-8p69nwuwo.vercel.app/
 ## Screenshots
 
 Welcome:
-![welcome screen](images/homepage.png)
+![welcome screen](src/images/homepage.png)
 
 Bar List:
-![bar list screen](images/bar_list.png)
+![bar list screen](src/images/bar_list.png)
 
 List Page:
-![list page screen](images/list_page.png)
+![list page screen](src/images/list_page.png)
 
 About:
-![about page screen](images/about.png)
+![about page screen](src/images/about.png)
 
 ## Build With
 * React
